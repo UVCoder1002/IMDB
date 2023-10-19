@@ -17,6 +17,8 @@ struct MovieDetailsView: View {
                 Spacer(minLength: 64)
                 VStack(alignment: .leading){
                     HStack(spacing: 12){
+                        
+                   
                         if let poster = selectedMovie?.posterImage{
                             Image(uiImage: UIImage(data: poster)!)
                                 .resizable()
@@ -71,7 +73,7 @@ struct MovieDetailsView: View {
                             .font(.title)
                             .fontWeight(.semibold)
                             .foregroundColor(Color(.systemGray2))
-                        Text(selectedMovie?.overView ?? "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.")
+                        Text(selectedMovie?.overview ?? "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.")
                             .font(.subheadline)
                             .foregroundColor(Color(.systemGray))
                     }
