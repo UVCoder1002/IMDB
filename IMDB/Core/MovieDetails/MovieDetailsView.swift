@@ -20,7 +20,7 @@ struct MovieDetailsView: View {
                         
                    
                         if let poster = selectedMovie?.posterImage{
-                            Image(uiImage: UIImage(data: poster)!)
+                            poster
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 240)

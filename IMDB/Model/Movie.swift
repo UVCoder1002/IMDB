@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum CodingKeys : String,CodingKey{
     case id,posterPath,overview,voteAverage,title,popularity,posterImage,releaseDate
@@ -14,13 +15,13 @@ enum CodingKeys : String,CodingKey{
 class Movie : Identifiable,Codable,ObservableObject{
     
     var id : Int64
-    var posterPath : String
+    var posterPath : String?
     var overview : String
     var voteAverage : Double
     var title : String
     var popularity : Double
     var releaseDate: String
-    var posterImage : Data?
+    var posterImage : Image?
     
     
     init(id: Int64,posterPath: String, overview: String, voteAverage: Double, title: String, popularity: Double,releaseDate: String) {
@@ -37,7 +38,7 @@ class Movie : Identifiable,Codable,ObservableObject{
     required init(from decoder: Decoder) throws {
        let values = try decoder.container(keyedBy: CodingKeys.self)
        id = try values.decode(Int64.self, forKey: .id)
-       posterPath = try values.decode(String.self, forKey: .posterPath)
+       posterPath = try values.decodeIfPresent(String.self, forKey: .posterPath)
         overview = try values.decode(String.self, forKey: .overview)
         voteAverage = try values.decode(Double.self, forKey: .voteAverage)
         title = try values.decode(String.self, forKey: .title)
@@ -62,10 +63,10 @@ class Movie : Identifiable,Codable,ObservableObject{
 
 
 struct Movies: Codable {
-    var dates : [String : String]
-    var page : Int64
-    var totalPages : Int64
-    var totalResults : Int64
+    var dates : [String : String]?
+    var page : Int64?
+    var totalPages : Int64?
+    var totalResults : Int64?
     var results : [Movie]
 }
 

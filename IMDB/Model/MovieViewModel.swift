@@ -6,27 +6,37 @@
 //
 
 import Foundation
-import Combine
+
 
 class MovieViewModel: ObservableObject {
     @Published var movieList = [Movie]()
+    @Published var filteredList = [Movie]()
     @Published var posterImageList = [Data]()
-    var page = 0
+  
      var movieListURLService = URLService(responseHandler: ResponseHandler<Movies>())
   
-    func getMovieList(from url: String) {
+    func getMovieList(from url: String,searchQuery: String,page: Int64,isPaginating:Bool) {
         
-        page+=1
+       
         Task{
             
-            await movieListURLService.handleURLRequest(from: url+page.description,parse: true) { movieApiData,error in
+            await movieListURLService.handleURLRequest(from: url+page.description,searchQuery: searchQuery, parse: true) { movieApiData,error in
                 if let error = error {
                 
                     print("Error In Fetching GetMovieList \(error.localizedDescription)")
                 }
                 if let movieApiData = movieApiData as? Movies{
                     DispatchQueue.main.async {
-                        self.movieList.append(contentsOf: movieApiData.results)
+                        if isPaginating{
+                            
+                            
+                            self.movieList.append(contentsOf: movieApiData.results)
+                        }
+                        else{
+                            self.movieList = movieApiData.results
+                        }
+                        
+                      
 //                        var movies = [Movie]()
 //                        if !self.movieList.isEmpty {
 //                            movies.append(contentsOf: self.movieList)
@@ -65,8 +75,10 @@ class MovieViewModel: ObservableObject {
         }
     }
     
+   
+    
     func handleRefresh(){
         movieList.removeAll()
-        getMovieList(from: Constants.fetchMovieListURLString)
+        getMovieList(from: Constants.fetchMovieListURLString,searchQuery: "",page: 1,isPaginating: false)
     }
 }
