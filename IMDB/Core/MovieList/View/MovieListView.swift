@@ -18,19 +18,22 @@ struct MovieListView: View {
     }
     var body: some View {
         NavigationStack{
-            ScrollView{
-                ListView(showMovieDetail: $showMovieDetail, selectedMovie: $selectedMovie, page: $page, query: query, movieViewModel: movieViewModel)
+            VStack {
+                SearchAndFilterBar()
+                ScrollView{
+                    ListView(showMovieDetail: $showMovieDetail, selectedMovie: $selectedMovie, page: $page, query: query, movieViewModel: movieViewModel)
+                }
             }
             
         }
         .navigationTitle("IMDB")
-        .searchable(text: $query,prompt: "Find Movie")
-        .onChange(of: query, perform: { newValue in
-            page = 1
-            
-            
-            movieViewModel.getMovieList(from: Constants.fetchFilteredListURLString, searchQuery: query, page: Int64(page),isPaginating: false)
-        })
+//        .searchable(text: $query,prompt: "Find Movie")
+//        .onChange(of: query, perform: { newValue in
+//            page = 1
+//            
+//
+//            movieViewModel.getMovieList(from: Constants.fetchFilteredListURLString, searchQuery: query, page: Int64(page),isPaginating: false)
+//        })
         .refreshable {
             movieViewModel.handleRefresh()
         }

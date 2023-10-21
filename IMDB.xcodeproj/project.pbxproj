@@ -19,6 +19,7 @@
 		C68C07A82ADFD2630079668E /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C07A72ADFD2630079668E /* MovieViewModel.swift */; };
 		C68C07AB2ADFDD9C0079668E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C07AA2ADFDD9C0079668E /* Constants.swift */; };
 		C693F7242A97506E00DFC6EC /* PosterImageHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C693F7232A97506E00DFC6EC /* PosterImageHolder.swift */; };
+		C6DBE4112AE42DB0003BC00C /* SearchAndFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DBE4102AE42DB0003BC00C /* SearchAndFilterBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		C68C07A72ADFD2630079668E /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		C68C07AA2ADFDD9C0079668E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C693F7232A97506E00DFC6EC /* PosterImageHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageHolder.swift; sourceTree = "<group>"; };
+		C6DBE4102AE42DB0003BC00C /* SearchAndFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAndFilterBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				C6709FE72A96182200DE0791 /* MovieListView.swift */,
 				C6709FE92A9619F600DE0791 /* MovieListRowView.swift */,
+				C6DBE4102AE42DB0003BC00C /* SearchAndFilterBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				C6709FF02A96580A00DE0791 /* URLService.swift in Sources */,
 				C68C07AB2ADFDD9C0079668E /* Constants.swift in Sources */,
 				C68C07A82ADFD2630079668E /* MovieViewModel.swift in Sources */,
+				C6DBE4112AE42DB0003BC00C /* SearchAndFilterBar.swift in Sources */,
 				C6709FD02A96060800DE0791 /* IMDBApp.swift in Sources */,
 				C6709FE82A96182200DE0791 /* MovieListView.swift in Sources */,
 				C6709FEC2A96288900DE0791 /* MovieDetailsView.swift in Sources */,
