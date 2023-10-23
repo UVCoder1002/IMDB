@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct MovieListView: View {
     @State private var showMovieDetail = false
     @State private var selectedMovie : Movie?
@@ -21,9 +23,9 @@ struct MovieListView: View {
             ScrollView{
                 ListView(showMovieDetail: $showMovieDetail, selectedMovie: $selectedMovie, page: $page, query: query, movieViewModel: movieViewModel)
             }
-            
+            .navigationTitle("IMDB")
         }
-        .navigationTitle("IMDB")
+        
         .searchable(text: $query,prompt: "Find Movie")
         .onChange(of: query, perform: { newValue in
             page = 1
@@ -90,6 +92,7 @@ struct ListView : View{
             if !newValue{
                 page = 1
                 movieViewModel.getMovieList(from: Constants.fetchMovieListURLString, searchQuery: query, page: Int64(page),isPaginating: false)
+                
             }
         })
         .listStyle(PlainListStyle())
