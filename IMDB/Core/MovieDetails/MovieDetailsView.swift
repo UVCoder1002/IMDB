@@ -93,7 +93,6 @@ struct MovieDetailsView: View {
                 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        selectedMovie = nil
                         showMovieDetail = false
                         dismiss()
                     } label: {
