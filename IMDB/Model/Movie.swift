@@ -44,7 +44,7 @@ class Movie : Identifiable,Codable,ObservableObject{
         title = try values.decode(String.self, forKey: .title)
         popularity = try values.decode(Double.self, forKey: .popularity)
         releaseDate = try values.decode(String.self, forKey: .releaseDate)
-//        posterImage = try values.decode(Data.self, forKey: .posterImage)
+
     
      }
 
@@ -57,7 +57,7 @@ class Movie : Identifiable,Codable,ObservableObject{
         try values.encode(title, forKey: .title)
         try values.encode(popularity, forKey: .popularity)
         try values.encode(releaseDate, forKey: .releaseDate)
-//        try values.encode(posterImage, forKey: .posterImage)
+
     }
 }
 

@@ -36,38 +36,6 @@ class MovieViewModel: ObservableObject {
                             self.movieList = movieApiData.results
                         }
                         
-                      
-//                        var movies = [Movie]()
-//                        if !self.movieList.isEmpty {
-//                            movies.append(contentsOf: self.movieList)
-//                        }
-//                        movies.append(contentsOf:  movieApiData.results as [Movie])
-                       
-                
-//                    for movie in movies{
-//
-//                        let posterURL = self.movieListURLService.posterImageURL(from: movie.posterPath )
-//                        Task{
-//
-//                            await self.movieListURLService.handleURLRequest(from: posterURL,parse: false) { data , error in
-//                                if let error = error {
-//                                    print("Error in fetching image : \(error.localizedDescription)")
-//                                }
-//                                else{
-//                                    //
-//                                    movie.posterImage = data as? Data
-//                                    DispatchQueue.main.async {
-//                                        self.movieList = movies
-//                                    }
-//
-//
-//                                    //
-//                                }
-//
-//
-//                            }
-//                        }
-//                    }
                 }
     
                 }

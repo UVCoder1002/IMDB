@@ -32,15 +32,7 @@ struct MovieListRowView: View {
                     
                 }
             }
-//           if let poster = movie?.posterImage
-//            {
-//              let _ = print("\(movie)$")
-//                Image(uiImage: UIImage(data: poster)!)                  .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 80, height: 120)
-//                    .foregroundColor(Color(.systemGray5))
-//                    .clipShape(PosterImageHolder())
-//            }
+
             else{
               
                 Image(systemName: "photo.artframe")
