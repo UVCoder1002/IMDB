@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MovieListView: View {
     @State private var showMovieDetail = false
+    @State private var showSearchAndFilterView = false
     @State private var selectedMovie : Movie?
     @State private var query = ""
     @State private var page = 1
@@ -18,35 +19,42 @@ struct MovieListView: View {
     }
     var body: some View {
         NavigationStack{
-            VStack {
-                SearchAndFilterBar()
-                ScrollView{
-                    ListView(showMovieDetail: $showMovieDetail, selectedMovie: $selectedMovie, page: $page, query: query, movieViewModel: movieViewModel)
+            if showSearchAndFilterView == true {
+                let _ = print("hii")
+                SearchAndFilterView(showSearchAndFilterView: $showSearchAndFilterView)
+            }
+            else{
+                
+                VStack {
+                    SearchAndFilterBar()
+                        .onTapGesture {
+                            print("hello")
+                            
+                            withAnimation(.snappy) {
+                                showSearchAndFilterView.toggle()
+                            }
+                        }
+                    ScrollView{
+                        ListView(showMovieDetail: $showMovieDetail, selectedMovie: $selectedMovie, page: $page, query: query, movieViewModel: movieViewModel)
+                    }
                 }
+                .navigationTitle("IMDB")
+                .refreshable {
+                    movieViewModel.handleRefresh()
+                }
+                .onAppear(perform: {
+                    print("DEBUG: IN Perform")
+                    Task{
+                        movieViewModel.getMovieList(from:Constants.fetchMovieListURLString,searchQuery: query,page: Int64(page),isPaginating: false)
+                    }
+                })
+                
+                .fullScreenCover(isPresented: $showMovieDetail, content: {
+                    MovieDetailsView(showMovieDetail: $showMovieDetail,selectedMovie: $selectedMovie)
+                })
             }
-            
         }
-        .navigationTitle("IMDB")
-//        .searchable(text: $query,prompt: "Find Movie")
-//        .onChange(of: query, perform: { newValue in
-//            page = 1
-//            
-//
-//            movieViewModel.getMovieList(from: Constants.fetchFilteredListURLString, searchQuery: query, page: Int64(page),isPaginating: false)
-//        })
-        .refreshable {
-            movieViewModel.handleRefresh()
-        }
-        .onAppear(perform: {
-            print("DEBUG: IN Perform")
-            Task{
-                movieViewModel.getMovieList(from:Constants.fetchMovieListURLString,searchQuery: query,page: Int64(page),isPaginating: false)
-            }
-        })
-
-        .fullScreenCover(isPresented: $showMovieDetail, content: {
-            MovieDetailsView(showMovieDetail: $showMovieDetail,selectedMovie: $selectedMovie)
-        })
+     
     }
     
 }
